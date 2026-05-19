@@ -10,7 +10,7 @@ spec:
 
   source:
     repoURL: https://github.com/shareq67/argocd-example-apps.git
-    targetRevision: main
+    targetRevision: master
     path: helm-guestbook
 
   destination:
