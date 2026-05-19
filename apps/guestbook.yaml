@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-guestbook
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: poc-demo
+
+  source:
+    repoURL: https://github.com/shareq67/argocd-example-apps.git
+    targetRevision: main
+    path: helm-guestbook
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo-helm-guestbook
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
