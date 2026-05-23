@@ -12,12 +12,13 @@ spec:
     - git:
         repoURL: https://github.com/shareq67/argocd-example-apps.git
         revision: master
+
         directories:
           - path: envs/*
 
   template:
     metadata:
-      name: 'helm-guestbook-{{path.basename}}'
+      name: 'helm-guestbook-{{.path.basename}}'
 
     spec:
       project: poc-demo
@@ -29,11 +30,11 @@ spec:
 
         helm:
           valueFiles:
-            - '{{path.path}}/values.yaml'
+            - '../envs/{{.path.basename}}/values.yaml'
 
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}-guestbook'
+        namespace: '{{.path.basename}}-guestbook'
 
       syncPolicy:
         automated:

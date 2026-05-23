@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"AppProject","metadata":{"annotations":{},"name":"poc-demo","namespace":"argocd"},"spec":{"clusterResourceWhitelist":[{"group":"*","kind":"*"}],"destinations":[{"namespace":"demo-*","server":"https://kubernetes.default.svc"},{"namespace":"argocd","server":"https://kubernetes.default.svc"}],"sourceRepos":["https://github.com/shareq67/argocd-nginx-demo.git","https://github.com/shareq67/argocd-example-apps.git"]}}
+  creationTimestamp: "2026-05-15T11:51:56Z"
+  generation: 3
+  name: poc-demo
+  namespace: argocd
+  resourceVersion: "159723"
+  uid: bd430462-f39e-4454-9352-c28f3828aebd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: demo-*
+    server: https://kubernetes.default.svc
+  - namespace: argocd
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/shareq67/argocd-nginx-demo.git
+  - https://github.com/shareq67/argocd-example-apps.git
